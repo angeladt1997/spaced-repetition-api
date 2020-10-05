@@ -4,7 +4,7 @@ const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*
 
 const UserService = {
   hasUserWithUserName(db, username) {
-    return db('user')
+    return db('spacerepuser')
       .where({ username })
       .first()
       .then(user => !!user)
@@ -12,7 +12,7 @@ const UserService = {
   insertUser(db, newUser) {
     return db
       .insert(newUser)
-      .into('user')
+      .into('spacerepuser')
       .returning('*')
       .then(([user]) => user)
   },
@@ -46,7 +46,7 @@ const UserService = {
       const [languageId] = await trx
         .into('language')
         .insert([
-          { name: 'French', user_id },
+          { name: 'Balinese', user_id },
         ], ['id'])
 
       // when inserting words,
@@ -58,14 +58,16 @@ const UserService = {
         .first()
 
       const languageWords = [
-        ['entraine toi', 'practice', 2],
-        ['bonjour', 'hello', 3],
-        ['maison', 'house', 4],
-        ['développeur', 'developer', 5],
-        ['traduire', 'translate', 6],
-        ['incroyable', 'amazing', 7],
-        ['chien', 'dog', 8],
-        ['chat', 'cat', null],
+        [1, 1, 'Hai', 'Hello', 2],
+        [2, 1, 'Tolong', 'Help', 3],
+        [3, 1, 'Minum', 'Drink', 4],
+        [4, 1, 'Makan', 'Eat', 5],
+        [5, 1, 'Sampai', 'Good', 6],
+        [6, 1, 'Jumpa', 'Bye', 7],
+        [7, 1, 'Maaf', 'Sorry', 8],
+        [8, 1, 'Tidak', 'No', 9],
+        [9, 1, 'Beli', 'Buy', 10],
+        [10, 1, 'Bernang', 'Swam', null],
       ]
 
       const [languageHeadId] = await trx

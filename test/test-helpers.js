@@ -114,16 +114,16 @@ function cleanTables(db) {
       `TRUNCATE
         "word",
         "language",
-        "user"`
+        "spacerepuser"`
       )
       .then(() =>
         Promise.all([
           trx.raw(`ALTER SEQUENCE word_id_seq minvalue 0 START WITH 1`),
           trx.raw(`ALTER SEQUENCE language_id_seq minvalue 0 START WITH 1`),
-          trx.raw(`ALTER SEQUENCE user_id_seq minvalue 0 START WITH 1`),
+          trx.raw(`ALTER SEQUENCE spacerepuser_id_seq minvalue 0 START WITH 1`),
           trx.raw(`SELECT setval('word_id_seq', 0)`),
           trx.raw(`SELECT setval('language_id_seq', 0)`),
-          trx.raw(`SELECT setval('user_id_seq', 0)`),
+          trx.raw(`SELECT setval('spacerepuser_id_seq', 0)`),
         ])
       )
   )

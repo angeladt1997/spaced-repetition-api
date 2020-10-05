@@ -23,7 +23,7 @@ describe('Auth Endpoints', function () {
    * @description Get token for login
    **/
   describe(`POST /api/auth/token`, () => {
-    beforeEach('insert users', () =>
+    beforeEach('insert spacerepuser', () =>
       helpers.seedUsers(
         db,
         testUsers,
